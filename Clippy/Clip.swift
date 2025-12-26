@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Clip: Identifiable {
+    var id: Int
+    let text: String
+}

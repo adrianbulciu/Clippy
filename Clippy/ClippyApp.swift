@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct ClippyApp: App {
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("Clippy", systemImage: "hammer") {
             ContentView()
         }
+        .menuBarExtraStyle(.window)
     }
 }
