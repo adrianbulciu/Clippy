@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ClipView: View {
-    var clip: Clip
+    var text: String
     @State private var isHovering = false
 
     var body: some View {
-        Text(clip.text)
-            .lineLimit(1)
+        Text(text)
+            .lineLimit(3)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(5)
+            .padding(10)
             .background(isHovering ? Color.secondary.opacity(0.2) : .clear)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .onHover { hovering in
@@ -27,5 +27,5 @@ struct ClipView: View {
 }
 
 #Preview {
-    ClipView(clip: Clip(id: 1, text: "Hello World"))
+    ClipView(text: "Hello World")
 }
