@@ -10,7 +10,8 @@ import KeyboardShortcuts
 
 struct SettingsView: View {
     @AppStorage("clipsHistoryLimit") var clipsHistoryLimit = 50
-    @StateObject private var permissionManager = PermissionManager()
+    @StateObject var permissionManager = PermissionManager()
+    @State private var hasPermission: Bool = false
     
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct SettingsView: View {
                 .pickerStyle(.automatic)
                 KeyboardShortcuts.Recorder("Open clips shortcut: ", name: .openClipsShortcutKeybind)
                 
-                if permissionManager.hasPermissionGranted() {
+                if hasPermission {
                     LabeledContent("Accessibility Permissions", value: "Granted")
                 }
                 else {
@@ -33,6 +34,9 @@ struct SettingsView: View {
                         Link("Grant accessibility permissions", destination: url)
                     }
                 }
+            }
+            .onAppear {
+                hasPermission = permissionManager.hasPermissionGranted()
             }
             .formStyle(.grouped)
             
