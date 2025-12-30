@@ -21,7 +21,7 @@ Made possible with the help of Paul Hudson (@twostraws) [tutorials](https://www.
 3. Move the app file to the applications folder.
 4. Done, launch the app.
 
-https://github.com/user-attachments/assets/69fe2c28-3fcc-42ed-9cdc-754c3a6e333d
+https://github.com/user-attachments/assets/f22c543e-2ee0-45e1-a9fe-f0600d6aaa55
 
 ### Setup:
 This application best functions with a keyboard shortcut set. 
