@@ -28,6 +28,7 @@ class PermissionManager: ObservableObject {
 class ClipboardViewModel: ObservableObject {
     @Published var clipboardText: String = ""
     @AppStorage("clips") var clipsData: Data = Data()
+    @AppStorage("clipsHistoryLimit") var clipsHistoryLimit = 50
     private var cancellable: AnyCancellable?
     
     var clips: [String] {
@@ -57,6 +58,10 @@ class ClipboardViewModel: ObservableObject {
                 guard let self, !newValue.isEmpty else { return }
 
                 self.clipboardText = newValue
+                
+                if self.clips.count == self.clipsHistoryLimit {
+                    _ = self.clips.popLast()
+                }
 
                 if !self.clips.contains(newValue) {
                     self.clips.insert(newValue, at: 0)
@@ -121,7 +126,7 @@ struct ClippyApp: App {
     @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
-        MenuBarExtra("Clippy", systemImage: "paperclip.circle") {
+        MenuBarExtra("Clippy", image: "clippy_menubar_icon") {
             MenuBarView()
         }
         .menuBarExtraStyle(.menu)

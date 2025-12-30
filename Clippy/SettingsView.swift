@@ -13,17 +13,20 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
+            Image("clippy_settings")
+                .padding(.bottom)
             Form {
                 Picker("Clips history limit", selection: $clipsHistoryLimit) {
                     ForEach(Array(stride(from: 50, through: 500, by: 50)), id: \.self) { value in
                         Text("\(value)")
+                            .tag(value)
                     }
                 }
                 .pickerStyle(.automatic)
                 KeyboardShortcuts.Recorder("Open clips shortcut: ", name: .openClipsShortcutKeybind)
             }
         }
-        .frame(width: 300, height: 200)
+        .padding()
     }
 }
 
