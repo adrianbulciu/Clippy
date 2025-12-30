@@ -68,7 +68,6 @@ struct ContentView: View {
                 focus = .search
             }
         }
-        .focusable()
         .onKeyPress { event in
             if event.key == "f" && event.modifiers.contains(.command) {
                 focus = .search

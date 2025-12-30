@@ -16,7 +16,7 @@ struct SettingsView: View {
             Image("clippy_settings")
                 .padding(.bottom)
             Form {
-                Picker("Clips history limit", selection: $clipsHistoryLimit) {
+                Picker("Clips history limit: ", selection: $clipsHistoryLimit) {
                     ForEach(Array(stride(from: 50, through: 500, by: 50)), id: \.self) { value in
                         Text("\(value)")
                             .tag(value)
