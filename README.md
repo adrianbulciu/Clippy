@@ -33,7 +33,7 @@ Also there are accessibility permissions that must be given for the app to be ab
 4. Allow accessibility permissions to Clippy.
 5. That's it.
 
-<img width="396" height="313" alt="Screenshot 2025-12-30 at 17 45 22" src="https://github.com/user-attachments/assets/319a1b8f-55dc-4a1f-9d31-c1bf4c259c7e" />
+https://github.com/user-attachments/assets/c4501714-c88f-4ab8-8379-bcecf0c74f92
 
 ### How to use:
 The shortcut you have set will open the clips window. 
