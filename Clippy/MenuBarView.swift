@@ -15,6 +15,10 @@ struct MenuBarView: View {
         VStack {
             Button("View Clips") {
                 openWindow(id: "clips")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    NSApp.activate(ignoringOtherApps: true)
+                    NSRunningApplication.current.activate(options: [.activateAllWindows])
+                }
             }
             .keyboardShortcut("V")
             .buttonStyle(.borderless)
