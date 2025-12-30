@@ -16,9 +16,10 @@ Made possible with the help of Paul Hudson (@twostraws) [tutorials](https://www.
 > This has been developed on MacOS 26.0 so please make sure you have at least that version.
 
 ### Installation:
-1. Download the app file from the distribution folder.
-2. Move the app file to the applications folder.
-3. Done, launch the app.
+1. Download the repository as zip.
+2. Locate the app file in the distribution folder.
+3. Move the app file to the applications folder.
+4. Done, launch the app.
 
 https://github.com/user-attachments/assets/69fe2c28-3fcc-42ed-9cdc-754c3a6e333d
 
