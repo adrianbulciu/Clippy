@@ -1,6 +1,6 @@
 # Clippy
 
-### Video Demo:  <URL HERE>
+### Video Demo: https://youtu.be/Gn2nNNXPJkE
 
 ### Description:
 Meet Clippy, an app made to quickly access clipboard contents, and paste them to the current selected location. 
