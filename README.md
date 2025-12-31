@@ -33,7 +33,7 @@ Also there are accessibility permissions that must be given for the app to be ab
 4. Allow accessibility permissions to Clippy.
 5. That's it.
 
-https://github.com/user-attachments/assets/c4501714-c88f-4ab8-8379-bcecf0c74f92
+https://github.com/user-attachments/assets/a0fcad8f-09cc-4a70-b88d-ac018bd4c752
 
 ### How to use:
 The shortcut you have set will open the clips window. 
@@ -118,9 +118,9 @@ _That's the end of the backbone files and now we get into the view files._
 
 ### 9. MenuBarView.swift
 
-This is a basic menu for the app which will be visible in the app bar at the top of the screen. It allows the user to reach the settings window, clear/quit the app or manually open the clips window.
+This is a basic menu for the app which will be visible in the app bar at the top of the screen. It allows the user to reach the settings window, manually open the clips window or quit the app.
 
-Initially I opted to make this be an actual window that would also show a part of the clips and have the settings/quit/clear buttons at the bottom, but in the end I have decided that it's not worth to duplicate the code + extra work just for some fancy part that might not be useful at all.
+Initially I opted to make this be an actual window that would also show a part of the clips and have the settings/quit buttons at the bottom, but in the end I have decided that it's not worth to duplicate the code + extra work just for some fancy part that might not be useful at all.
 
 ### 10. SettingsView.swift
 
@@ -134,7 +134,7 @@ Here we have extracted the view of a singular clip that will be used for each cl
 
 ### 12. ContentView.swift (the default name got away)
 
-This is the view that displays the clips list. It also handles the interaction with the list and list items.
+This is the view that displays the clips list. It also handles the interaction with the list and list items. There is a button to clear the list of clips if wanted.
 
 As I mentioned in the how to use instructions, the user can interact with the list with arrow keys, also with the mouse by hovering over list items. 
 
