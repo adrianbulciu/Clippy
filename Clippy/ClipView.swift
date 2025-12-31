@@ -17,7 +17,8 @@ struct ClipView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(10)
             .background(isHovering ? Color.secondary.opacity(0.2) : .clear)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .cornerRadius(10)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.secondary.opacity(0.1), lineWidth: 1))
             .onHover { hovering in
                 withAnimation(.linear(duration: 0.1)) {
                     isHovering = hovering

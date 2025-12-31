@@ -10,7 +10,7 @@ import Combine
 
 class ClipboardViewModel: ObservableObject {
     @Published var clipboardText: String = ""
-    @AppStorage("clips") var clipsData: Data = Data()
+    @AppStorage("clips") private var clipsData: Data = Data()
     @AppStorage("clipsHistoryLimit") var clipsHistoryLimit = 50
     private var cancellable: AnyCancellable?
     
@@ -50,9 +50,5 @@ class ClipboardViewModel: ObservableObject {
                     self.clips.insert(newValue, at: 0)
                 }
             }
-    }
-    
-    func clearClips() -> Void {
-        self.clips.removeAll()
     }
 }

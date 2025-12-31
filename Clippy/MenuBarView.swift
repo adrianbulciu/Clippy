@@ -29,11 +29,6 @@ struct MenuBarView: View {
             .keyboardShortcut(",")
             .buttonStyle(.borderless)
             
-            Button("Clear clips") {
-                viewModel.clearClips()
-            }
-            .buttonStyle(.borderless)
-            
             Button("Quit App") {
                 NSApplication.shared.terminate(nil)
             }

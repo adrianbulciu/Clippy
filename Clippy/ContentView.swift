@@ -11,6 +11,7 @@ import Cocoa
 struct ContentView: View {
     @StateObject private var viewModel = ClipboardViewModel()
     @StateObject var permissionManager = PermissionManager()
+    @Environment(\.scenePhase) private var scenePhase
     @State var showPermissionAlert = false
     @State private var searchText: String = ""
     @State private var selection: String?
@@ -40,34 +41,53 @@ struct ContentView: View {
                     moveFocusToList()
                     return .handled
                 }
-            List(filteredClips, id: \.self, selection: $selection) { text in
-                ClipView(text: text)
-                    .listRowSeparator(.hidden)
-                    .tag(text)
-                    .onTapGesture {
-                        selection = text
-                        pasteSelectedClip()
-                    }
-            }
-            .focusable()
-            .focused($focus, equals: .list)
-            .listStyle(.plain)
-            .padding(.vertical, 5)
-            .onKeyPress(.upArrow) {
-                if selection == filteredClips.first {
-                    focus = .search
-                    return .handled
+            if !filteredClips.isEmpty {
+                Button {
+                    selection = nil
+                    searchText = ""
+                    viewModel.clips = []
+                } label: {
+                    Text("Clear list")
+                        .frame(maxWidth: .infinity)
                 }
-                return .ignored
+                .padding(12)
+            }
+            ScrollViewReader { proxy in
+                List(filteredClips, id: \.self, selection: $selection) { text in
+                    ClipView(text: text)
+                        .listRowSeparator(.hidden)
+                        .tag(text)
+                        .onTapGesture {
+                            selection = text
+                            pasteSelectedClip()
+                        }
+                }
+                .focusable()
+                .focused($focus, equals: .list)
+                .listStyle(.plain)
+                .padding(.vertical, 5)
+                .onKeyPress(.upArrow) {
+                    if selection == filteredClips.first {
+                        focus = .search
+                        return .handled
+                    }
+                    return .ignored
+                }
+                .onChange(of: scenePhase) { old, newPhase in
+                    if newPhase == .active {
+                        searchText = ""
+                        selection = nil
+                        DispatchQueue.main.async {
+                            focus = .search
+                            guard let first = filteredClips.first else { return }
+                            proxy.scrollTo(first, anchor: .top)
+                        }
+                    }
+                }
             }
         }
         .navigationTitle("Clips")
         .frame(width: 400, height: 500)
-        .onAppear {
-            DispatchQueue.main.async {
-                focus = .search
-            }
-        }
         .onKeyPress { event in
             if event.key == "f" && event.modifiers.contains(.command) {
                 focus = .search
