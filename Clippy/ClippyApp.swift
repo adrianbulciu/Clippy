@@ -18,6 +18,7 @@ struct ClippyApp: App {
     var body: some Scene {
         MenuBarExtra("Clippy", image: "clippy_menubar_icon") {
             MenuBarView()
+                .environmentObject(viewModel)
         }
         .menuBarExtraStyle(.menu)
         .onChange(of: scenePhase, initial: true) { oldValue, newValue in
@@ -37,6 +38,7 @@ struct ClippyApp: App {
         
         Window("Clips", id: "clips") {
             ContentView()
+                .environmentObject(viewModel)
                 .background(
                     WindowAccessor { window in
                         guard let window else { return }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MenuBarView: View {
     @Environment(\.openWindow) private var openWindow
-    @StateObject private var viewModel = ClipboardViewModel()
+    @EnvironmentObject private var viewModel: ClipboardViewModel
 
     var body: some View {
         VStack {
@@ -22,6 +22,10 @@ struct MenuBarView: View {
             }
             .keyboardShortcut("V")
             .buttonStyle(.borderless)
+            
+            Button("Clear") {
+                viewModel.clips = []
+            }
             
             Button("Settings") {
                 openWindow(id: "settings")
